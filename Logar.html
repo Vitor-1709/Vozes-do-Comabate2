@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Login • Academia de Jiu-Jitsu</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Fonte -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ===== RESET ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(180deg, #0b0b0b, #1a1a1a);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ===== NAVBAR ===== */
+    .nav {
+      position: relative;
+      width: 400px;
+      height: 60px;
+      margin: 20px auto 40px auto;
+    }
+
+    .container {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: center;
+      padding: 0.5em;
+      border-radius: 12px;
+    }
+
+    .btn {
+      padding: 0.5em 1.5em;
+      color: #fff;
+      cursor: pointer;
+      transition: 0.1s;
+      user-select: none;
+    }
+
+    .btn:hover {
+      background: rgba(74, 222, 128, 0.3); /* Verde leve no hover */
+      border-radius: 6px;
+    }
+
+    .outline {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .rect {
+      stroke-dashoffset: 5;
+      stroke-dasharray: 0 0 10 40 10 40;
+      transition: 0.5s;
+      stroke: #4ade80; /* Contorno verde */
+      fill: transparent;
+      stroke-width: 5;
+    }
+
+    .container:hover .outline .rect {
+      transition: 999999s;
+      stroke-dashoffset: 1;
+      stroke-dasharray: 0;
+    }
+
+    .btn:nth-child(1):hover ~ svg .rect {
+      stroke-dashoffset: 0;
+      stroke-dasharray: 0 2 8 73.3 8 10.7;
+    }
+
+    .btn:nth-child(2):hover ~ svg .rect {
+      stroke-dashoffset: 0;
+      stroke-dasharray: 0 12.6 9.5 49.3 9.5 31.6;
+    }
+
+    .btn:nth-child(3):hover ~ svg .rect {
+      stroke-dashoffset: 0;
+      stroke-dasharray: 0 24.5 8.5 27.5 8.5 55.5;
+    }
+
+    .btn:nth-child(4):hover ~ svg .rect {
+      stroke-dashoffset: 0;
+      stroke-dasharray: 0 34.7 6.9 10.2 6.9 76;
+    }
+
+    .btn:hover ~ .outline .rect {
+      stroke-dashoffset: 0;
+      stroke-dasharray: 0 0 10 40 10 40;
+      transition: 0.5s !important;
+    }
+
+    /* ===== LOGIN ===== */
+    .login-container {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .login-box {
+      background: rgba(0,0,0,0.5);
+      border-radius: 20px;
+      padding: 40px;
+      width: 100%;
+      max-width: 420px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 0 30px rgba(0,0,0,0.5);
+    }
+
+    .login-box h1 {
+      text-align: center;
+      margin-bottom: 10px;
+      font-size: 2rem;
+    }
+
+    .login-box span {
+      color: #4ade80; /* Verde destaque */
+    }
+
+    .login-box p {
+      text-align: center;
+      color: #ccc;
+      margin-bottom: 30px;
+    }
+
+    .input-group {
+      margin-bottom: 20px;
+    }
+
+    .input-group label {
+      display: block;
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #ccc;
+    }
+
+    .input-group input {
+      width: 100%;
+      padding: 14px;
+      border-radius: 10px;
+      border: none;
+      outline: none;
+      background: rgba(255,255,255,0.1);
+      color: #fff;
+    }
+
+    .input-group input:focus {
+      outline: 2px solid #4ade80;
+    }
+
+    .login-btn {
+      width: 100%;
+      padding: 15px;
+      border: none;
+      border-radius: 30px;
+      background: #4ade80;
+      color: #000;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .login-btn:hover {
+      background: #22c55e;
+      transform: scale(1.03);
+    }
+
+    .login-links {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 0.9rem;
+    }
+
+    .login-links a {
+      color: #4ade80;
+      text-decoration: none;
+    }
+
+    footer {
+      background: #0b0b0b;
+      text-align: center;
+      padding: 20px;
+      color: #777;
+      font-size: 0.85rem;
+    }
+
+    /* ===== RESPONSIVO ===== */
+    @media (max-width: 500px) {
+      .nav {
+        width: 90%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR UIVERSE.IO COM CORES CORRETAS -->
+  <div class="nav">
+    <div class="container">
+      <div class="btn" onclick="location.href='index.html'">Voltar</div>
+      <div class="btn" onclick="location.href='cadastro.html'">Cadastrar</div>
+      <div class="btn" onclick="location.href='Localizações.html'">Localizações</div>
+      <svg class="outline" overflow="visible" width="400" height="60" viewBox="0 0 400 60">
+        <rect class="rect" pathLength="100" x="0" y="0" width="400" height="60"></rect>
+      </svg>
+    </div>
+  </div>
+
+  <!-- LOGIN -->
+  <main class="login-container">
+    <div class="login-box">
+      <h1>Entrar na <span>Conta</span></h1>
+      <p>Acesse sua conta e continue sua evolução</p>
+
+      <form>
+        <div class="input-group">
+          <label>Email</label>
+          <input type="email" placeholder="Digite seu email" required>
+        </div>
+
+        <div class="input-group">
+          <label>Senha</label>
+          <input type="password" placeholder="Digite sua senha" required>
+        </div>
+
+        <button class="login-btn" type="submit">Entrar</button>
+      </form>
+
+      <div class="login-links">
+        <p>Não tem conta? <a href="#">Cadastre-se</a></p>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    © 2026 Academia de Jiu-Jitsu • Todos os direitos reservados
+  </footer>
+
+</body>
+</html>
