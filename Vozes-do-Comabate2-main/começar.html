@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Níveis de Treinamento • Academia de Jiu-Jitsu</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(180deg, #0b0b0b, #1a1a1a);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    header {
+      width: 100%;
+      background: rgba(0,0,0,0.4);
+      backdrop-filter: blur(8px);
+      display: flex;
+      justify-content: center;
+      padding: 20px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav {
+      position: relative;
+      width: 700px; /* LARGURA REAL DE NAVBAR */
+      height: 70px;
+    }
+
+    /* ===== NAVBAR ORIGINAL (EFEITO PRESERVADO) ===== */
+    .outline {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .rect {
+      stroke-dashoffset: 5;
+      stroke-dasharray: 0 0 10 40 10 40;
+      transition: 0.5s;
+      stroke: #4ade80;
+    }
+
+    .container {
+      position: absolute;
+      inset: 0;
+      
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      padding: 0 20px;
+      border-radius: 16px;
+    }
+
+    .container:hover .outline .rect {
+      transition: 999999s;
+      stroke-dashoffset: 1;
+      stroke-dasharray: 0;
+    }
+
+    .btn {
+      padding: 0.8em 2em;
+      color: #fff;
+      cursor: pointer;
+      transition: background 0.15s;
+      font-weight: 500;
+      z-index: 2;
+    }
+
+    .btn:hover {
+      background: rgba(255,255,255,0.18);
+      border-radius: 8px;
+    }
+
+    /* ===== EFEITOS EXATOS DO MODELO ===== */
+    .btn:nth-child(1):hover ~ svg .rect {
+      stroke-dashoffset: 0;
+      stroke-dasharray: 0 2 8 73.3 8 10.7;
+    }
+
+    .btn:nth-child(2):hover ~ svg .rect {
+      stroke-dashoffset: 0;
+      stroke-dasharray: 0 12.6 9.5 49.3 9.5 31.6;
+    }
+
+    .btn:nth-child(3):hover ~ svg .rect {
+      stroke-dashoffset: 0;
+      stroke-dasharray: 0 24.5 8.5 27.5 8.5 55.5;
+    }
+
+    .btn:nth-child(4):hover ~ svg .rect {
+      stroke-dashoffset: 0;
+      stroke-dasharray: 0 34.7 6.9 10.2 6.9 76;
+    }
+
+    .btn:hover ~ .outline .rect {
+      stroke-dashoffset: 0;
+      stroke-dasharray: 0 0 10 40 10 40;
+      transition: 0.5s !important;
+    }
+
+    /* ===== CONTEÚDO ===== */
+    .content {
+      width: 90%;
+      max-width: 900px;
+      padding: 40px 20px;
+      position: relative;
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    h1 {
+      font-size: 2.3rem;
+    }
+
+    h1 span {
+      color: #4ade80;
+    }
+
+    /* ===== BOTÃO SHINE ===== */
+    .btn-shine {
+      padding: 12px 25px;
+      cursor: pointer;
+      text-transform: uppercase;
+      background-color: #1a1a1a;
+      border: 1px solid #4ade80;
+      border-radius: 10px;
+      color: #fff;
+      font-weight: 500;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* ===== LEVELS ===== */
+    .level-buttons {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      gap: 30px;
+      margin-top: 50px;
+    }
+
+    .level-card {
+      background: rgba(255,255,255,0.05);
+      padding: 20px;
+      width: 200px;
+      border-radius: 20px;
+      text-align: center;
+    }
+
+    .level-card img {
+      width: 100px;
+    }
+
+    /* ===== MODAL ===== */
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.7);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .modal-content {
+      background: #111;
+      padding: 30px;
+      border-radius: 15px;
+      width: 90%;
+      max-width: 400px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .modal-content h2 {
+      text-align: center;
+      color: #4ade80;
+    }
+
+    .modal-content input,
+    .modal-content select {
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+      outline: none;
+    }
+
+    .modal-actions {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    footer {
+      margin-top: auto;
+      padding: 20px;
+      color: #777;
+      font-size: 0.85rem;
+    }
+
+    @media (max-width: 600px) {
+      .header-content {
+        justify-content: center;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav">
+      <div class="container">
+        <div class="btn" onclick="location.href='index.html'">Voltar para o inicio</div>
+        <div class="btn" onclick="location.href='cadastro.html'">Cadastrar</div>
+        <div class="btn" onclick="location.href='Logar.html'">Logar</div>
+        <div class="btn" onclick="location.href='Localizações.html'">Localizações</div>
+
+        <svg
+          class="outline"
+          overflow="visible"
+          width="700"
+          height="70"
+          viewBox="0 0 700 70"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <rect
+            class="rect"
+            pathLength="100"
+            x="0"
+            y="0"
+            width="700"
+            height="70"
+            fill="transparent"
+            stroke-width="5"
+          ></rect>
+        </svg>
+      </div>
+    </div>
+  </header>
+  <div class="content">
+    <div class="header-content">
+      <h1>Níveis de Treinamento <span>Jiu-Jitsu</span></h1>
+      <button class="btn-shine" onclick="openModal()">Enviar Vídeo</button>
+    </div>
+
+    <div class="level-buttons">
+      <div class="level-card">
+        <img src="Faixa Branca e Azul.png">
+        <button class="btn-shine">Iniciante</button>
+      </div>
+
+      <div class="level-card">
+        <img src="Faixa Roxa e Marrom.png">
+        <button class="btn-shine">Intermediário</button>
+      </div>
+
+      <div class="level-card">
+        <img src="Faixa Preto.png">
+        <button class="btn-shine">Avançado</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL -->
+  <div class="modal" id="videoModal">
+    <div class="modal-content">
+      <h2>Novo Treino</h2>
+
+      <input type="text" id="videoName" placeholder="Nome do treino">
+      <input type="url" id="videoUrl" placeholder="URL do vídeo">
+
+      <select id="videoLevel">
+        <option value="">Selecione a faixa</option>
+        <option value="branca">Faixa Branca </option>
+        <option value="branca">Faixa Azul</option>
+        <option value="azul">Faixa Roxa</option>
+        <option value="azul">Faixa Marron</option>
+        <option value="preta">Faixa Preta</option>
+      </select>
+
+      <div class="modal-actions">
+        <button class="btn-shine" onclick="saveVideo()">Salvar</button>
+        <button class="btn-shine" onclick="closeModal()">Cancelar</button>
+      </div>
+    </div>
+  </div>
+
+  <footer>© 2026 Academia de Jiu-Jitsu</footer>
+
+  <script>
+    const modal = document.getElementById("videoModal");
+
+    function openModal() {
+      modal.style.display = "flex";
+    }
+
+    function closeModal() {
+      modal.style.display = "none";
+    }
+
+    function saveVideo() {
+      const name = videoName.value.trim();
+      const url = videoUrl.value.trim();
+      const level = videoLevel.value;
+
+      if (!name || !url || !level) {
+        alert("Preencha todos os campos!");
+        return;
+      }
+
+      const videos = JSON.parse(localStorage.getItem("videos")) || [];
+      videos.push({ name, url, level });
+      localStorage.setItem("videos", JSON.stringify(videos));
+
+      videoName.value = "";
+      videoUrl.value = "";
+      videoLevel.value = "";
+
+      closeModal();
+    }
+
+    modal.addEventListener("click", e => {
+      if (e.target === modal) closeModal();
+    });
+  </script>
+
+</body>
+</html>

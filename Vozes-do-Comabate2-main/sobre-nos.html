@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Sobre Nós • Academia de Jiu-Jitsu</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Fonte -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ===== RESET ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(180deg, #0b0b0b, #1a1a1a);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ===== NAVBAR ===== */
+    .nav {
+      position: relative;
+      width: 400px;
+      height: 60px;
+      margin: 20px auto 40px auto;
+    }
+
+    .container {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: center;
+      padding: 0.5em;
+      border-radius: 12px;
+    }
+
+    .btn {
+      padding: 0.5em 1.5em;
+      color: #fff;
+      cursor: pointer;
+      transition: 0.1s;
+      user-select: none;
+    }
+
+    .btn:hover {
+      background: rgba(74, 222, 128, 0.3);
+      border-radius: 6px;
+    }
+
+    .outline {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .rect {
+      stroke-dashoffset: 5;
+      stroke-dasharray: 0 0 10 40 10 40;
+      transition: 0.5s;
+      stroke: #4ade80;
+      fill: transparent;
+      stroke-width: 5;
+    }
+
+    .container:hover .outline .rect {
+      transition: 999999s;
+      stroke-dashoffset: 1;
+      stroke-dasharray: 0;
+    }
+
+    .btn:nth-child(1):hover ~ svg .rect {
+      stroke-dashoffset: 0;
+      stroke-dasharray: 0 2 8 73.3 8 10.7;
+    }
+
+    .btn:nth-child(2):hover ~ svg .rect {
+      stroke-dashoffset: 0;
+      stroke-dasharray: 0 12.6 9.5 49.3 9.5 31.6;
+    }
+
+    .btn:nth-child(3):hover ~ svg .rect {
+      stroke-dashoffset: 0;
+      stroke-dasharray: 0 24.5 8.5 27.5 8.5 55.5;
+    }
+
+    .btn:nth-child(4):hover ~ svg .rect {
+      stroke-dashoffset: 0;
+      stroke-dasharray: 0 34.7 6.9 10.2 6.9 76;
+    }
+
+    .btn:hover ~ .outline .rect {
+      stroke-dashoffset: 0;
+      stroke-dasharray: 0 0 10 40 10 40;
+      transition: 0.5s !important;
+    }
+
+    /* ===== CONTEÚDO ===== */
+    .content {
+      flex: 1;
+      padding: 20px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+    }
+
+    h1 span {
+      color: #4ade80;
+    }
+
+    .text-section {
+      background: rgba(255,255,255,0.05);
+      padding: 25px 30px;
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 0 20px rgba(0,0,0,0.5);
+      margin-bottom: 20px;
+    }
+
+    .text-section p {
+      font-size: 1.05rem;
+      color: #ccc;
+      line-height: 1.6;
+    }
+
+    footer {
+      background: #0b0b0b;
+      text-align: center;
+      padding: 20px;
+      color: #777;
+      font-size: 0.85rem;
+      margin-top: 20px;
+    }
+
+    @media (max-width: 500px) {
+      .nav {
+        width: 90%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header>
+    <div class="nav">
+      <div class="container">
+        <div class="btn" onclick="location.href='index.html'">Voltar</div>
+        <div class="btn" onclick="location.href='cadastro.html'">Cadastrar</div>
+        <div class="btn" onclick="location.href='Logar.html'">Logar</div>
+        <div class="btn" onclick="location.href='Localizações.html'">Localizações </div>
+
+        <svg
+          class="outline"
+          overflow="visible"
+          width="500"
+          height="70"
+          viewBox="0 0 700 70"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <rect
+            class="rect"
+            pathLength="100"
+            x="0"
+            y="0"
+            width="700"
+            height="70"
+            fill="transparent"
+            stroke-width="5"
+          ></rect>
+        </svg>
+      </div>
+    </div>
+  </header>
+
+  <!-- CONTEÚDO SOBRE -->
+  <div class="content">
+    <h1>Sobre <span>Nosso Site</span></h1>
+
+    <div class="text-section">
+      <p>
+        Bem-vindo ao nosso site de Jiu-Jitsu! Aqui você encontrará informações completas sobre academias, técnicas e treinamentos voltados para todos os níveis, desde iniciantes até avançados. Nosso objetivo é promover a arte do Jiu-Jitsu como uma ferramenta de disciplina, força e autoconfiança.
+      </p>
+    </div>
+
+    <div class="text-section">
+      <p>
+        O site também oferece recursos para localizar academias próximas de você, entrar em contato com instrutores qualificados e conhecer eventos e campeonatos da região. Queremos que cada visitante tenha uma experiência completa e motivadora, entendendo que o Jiu-Jitsu vai muito além de um esporte: é um estilo de vida.
+      </p>
+    </div>
+
+    <div class="text-section">
+      <p>
+        Nossa missão é conectar pessoas apaixonadas pelo Jiu-Jitsu, oferecendo conteúdo de qualidade, informações confiáveis e um espaço virtual seguro para aprendizado e crescimento contínuo.
+      </p>
+    </div>
+  </div>
+
+  <footer>
+    © 2026 Academia de Jiu-Jitsu • Todos os direitos reservados
+  </footer>
+
+</body>
+</html>

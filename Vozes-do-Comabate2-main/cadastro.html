@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Cadastro | Academia de Jiu-Jitsu</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Fonte -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ===== RESET ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(180deg, #0b0b0b, #1a1a1a);
+      color: #fff;
+    }
+
+    /* ===== HEADER / NAVBAR ===== */
+    header {
+      width: 100%;
+      background: rgba(0,0,0,0.4);
+      backdrop-filter: blur(8px);
+      display: flex;
+      justify-content: center;
+      padding: 20px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav {
+      position: relative;
+      width: 700px;
+      height: 70px;
+    }
+
+    .outline {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .rect {
+      stroke-dashoffset: 5;
+      stroke-dasharray: 0 0 10 40 10 40;
+      transition: 0.5s;
+      stroke: #4ade80;
+    }
+
+    .container {
+      position: absolute;
+      inset: 0;
+
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      padding: 0 20px;
+      border-radius: 16px;
+    }
+
+    .container:hover .outline .rect {
+      transition: 999999s;
+      stroke-dashoffset: 1;
+      stroke-dasharray: 0;
+    }
+
+    .btn {
+      padding: 0.8em 2em;
+      color: #fff;
+      cursor: pointer;
+      transition: background 0.15s;
+      font-weight: 500;
+      z-index: 2;
+    }
+
+    .btn:hover {
+      background: rgba(255,255,255,0.18);
+      border-radius: 8px;
+    }
+
+    /* ===== EFEITOS ORIGINAIS ===== */
+    .btn:nth-child(1):hover ~ svg .rect {
+      stroke-dashoffset: 0;
+      stroke-dasharray: 0 2 8 73.3 8 10.7;
+    }
+
+    .btn:nth-child(2):hover ~ svg .rect {
+      stroke-dashoffset: 0;
+      stroke-dasharray: 0 12.6 9.5 49.3 9.5 31.6;
+    }
+
+    .btn:nth-child(3):hover ~ svg .rect {
+      stroke-dashoffset: 0;
+      stroke-dasharray: 0 24.5 8.5 27.5 8.5 55.5;
+    }
+
+    .btn:nth-child(4):hover ~ svg .rect {
+      stroke-dashoffset: 0;
+      stroke-dasharray: 0 34.7 6.9 10.2 6.9 76;
+    }
+
+    .btn:hover ~ .outline .rect {
+      stroke-dashoffset: 0;
+      stroke-dasharray: 0 0 10 40 10 40;
+      transition: 0.5s !important;
+    }
+
+    /* ===== CADASTRO ===== */
+    main {
+      min-height: calc(100vh - 140px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+
+    .register-container {
+      background: rgba(0, 0, 0, 0.55);
+      backdrop-filter: blur(12px);
+      border-radius: 18px;
+      padding: 40px;
+      width: 100%;
+      max-width: 420px;
+      border: 1px solid rgba(74, 222, 128, 0.3);
+      box-shadow: 0 0 30px rgba(74, 222, 128, 0.15);
+    }
+
+    .register-container h1 {
+      text-align: center;
+      margin-bottom: 10px;
+      font-size: 2rem;
+    }
+
+    .register-container h1 span {
+      color: #4ade80;
+    }
+
+    .register-container p {
+      text-align: center;
+      color: #aaa;
+      margin-bottom: 30px;
+      font-size: 0.95rem;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    label {
+      font-size: 0.85rem;
+      color: #ccc;
+    }
+
+    input {
+      width: 100%;
+      padding: 14px;
+      border-radius: 10px;
+      border: 1px solid #222;
+      background: #0f0f0f;
+      color: #fff;
+      outline: none;
+      font-size: 0.95rem;
+      transition: 0.3s;
+    }
+
+    input:focus {
+      border-color: #4ade80;
+      box-shadow: 0 0 0 2px rgba(74, 222, 128, 0.2);
+    }
+
+    button {
+      margin-top: 10px;
+      padding: 15px;
+      border-radius: 30px;
+      border: none;
+      background: #4ade80;
+      color: #000;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #22c55e;
+      transform: scale(1.03);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header>
+    <div class="nav">
+      <div class="container">
+        <div class="btn" onclick="location.href='index.html'">Voltar</div>
+        <div class="btn" onclick="location.href='Logar.html'">Logar</div>
+        <div class="btn" onclick="location.href='Localizações.html'">Localizações</div>
+        <div class="btn" onclick="location.href='sobre-nos.html'">Sobre Nos  </div>
+
+        <svg
+          class="outline"
+          overflow="visible"
+          width="700"
+          height="70"
+          viewBox="0 0 700 70"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <rect
+            class="rect"
+            pathLength="100"
+            x="0"
+            y="0"
+            width="700"
+            height="70"
+            fill="transparent"
+            stroke-width="5"
+          ></rect>
+        </svg>
+      </div>
+    </div>
+  </header>
+
+  <!-- CONTEÚDO -->
+  <main>
+    <div class="register-container">
+      <h1>Cadastro <span>Aluno</span></h1>
+      <p>Faça parte da nossa equipe no tatame</p>
+
+      <form>
+        <div>
+          <label>Nome</label>
+          <input type="text" placeholder="Digite seu nome" required>
+        </div>
+
+        <div>
+          <label>E-mail</label>
+          <input type="email" placeholder="Digite seu e-mail" required>
+        </div>
+
+        <div>
+          <label>Idade</label>
+          <input type="number" placeholder="Digite sua idade" min="1" required>
+        </div>
+
+        <div>
+          <label>Senha</label>
+          <input type="password" placeholder="Crie uma senha" required>
+        </div>
+
+        <button type="submit">Cadastrar</button>
+      </form>
+    </div>
+  </main>
+
+</body>
+</html>

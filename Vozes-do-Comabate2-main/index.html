@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Academia de Jiu-Jitsu</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Fonte -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ===== RESET ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(180deg, #0b0b0b, #1a1a1a);
+      color: #fff;
+    }
+
+    /* ===== HEADER / NAVBAR ===== */
+    header {
+      width: 100%;
+      background: rgba(0,0,0,0.4);
+      backdrop-filter: blur(8px);
+      display: flex;
+      justify-content: center;
+      padding: 20px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav {
+      position: relative;
+      width: 700px; /* LARGURA REAL DE NAVBAR */
+      height: 70px;
+    }
+
+    /* ===== NAVBAR ORIGINAL (EFEITO PRESERVADO) ===== */
+    .outline {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .rect {
+      stroke-dashoffset: 5;
+      stroke-dasharray: 0 0 10 40 10 40;
+      transition: 0.5s;
+      stroke: #4ade80;
+    }
+
+    .container {
+      position: absolute;
+      inset: 0;
+      
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      padding: 0 20px;
+      border-radius: 16px;
+    }
+
+    .container:hover .outline .rect {
+      transition: 999999s;
+      stroke-dashoffset: 1;
+      stroke-dasharray: 0;
+    }
+
+    .btn {
+      padding: 0.8em 2em;
+      color: #fff;
+      cursor: pointer;
+      transition: background 0.15s;
+      font-weight: 500;
+      z-index: 2;
+    }
+
+    .btn:hover {
+      background: rgba(255,255,255,0.18);
+      border-radius: 8px;
+    }
+
+    /* ===== EFEITOS EXATOS DO MODELO ===== */
+    .btn:nth-child(1):hover ~ svg .rect {
+      stroke-dashoffset: 0;
+      stroke-dasharray: 0 2 8 73.3 8 10.7;
+    }
+
+    .btn:nth-child(2):hover ~ svg .rect {
+      stroke-dashoffset: 0;
+      stroke-dasharray: 0 12.6 9.5 49.3 9.5 31.6;
+    }
+
+    .btn:nth-child(3):hover ~ svg .rect {
+      stroke-dashoffset: 0;
+      stroke-dasharray: 0 24.5 8.5 27.5 8.5 55.5;
+    }
+
+    .btn:nth-child(4):hover ~ svg .rect {
+      stroke-dashoffset: 0;
+      stroke-dasharray: 0 34.7 6.9 10.2 6.9 76;
+    }
+
+    .btn:hover ~ .outline .rect {
+      stroke-dashoffset: 0;
+      stroke-dasharray: 0 0 10 40 10 40;
+      transition: 0.5s !important;
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      height: calc(100vh - 120px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .hero-content {
+      max-width: 800px;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .hero span {
+      color: #4ade80;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      color: #ccc;
+      margin-bottom: 30px;
+    }
+
+    .hero button {
+      padding: 15px 35px;
+      border: none;
+      background: #4ade80;
+      color: #000;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .hero button:hover {
+      background: #22c55e;
+      transform: scale(1.05);
+    }
+
+    footer {
+      background: #0b0b0b;
+      text-align: center;
+      padding: 30px;
+      color: #777;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER / NAVBAR -->
+  <header>
+    <div class="nav">
+      <div class="container">
+        <div class="btn" onclick="location.href='cadastro.html'">Cadastro</div>
+        <div class="btn" onclick="location.href='Logar.html'">Logar</div>
+        <div class="btn" onclick="location.href='Localizações.html'">Localizações</div>
+        <div class="btn" onclick="location.href='sobre-nos.html'">Sobre Nos</div>
+
+        <svg
+          class="outline"
+          overflow="visible"
+          width="700"
+          height="70"
+          viewBox="0 0 700 70"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <rect
+            class="rect"
+            pathLength="100"
+            x="0"
+            y="0"
+            width="700"
+            height="70"
+            fill="transparent"
+            stroke-width="5"
+          ></rect>
+        </svg>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Força, Técnica e <span>Disciplina</span></h1>
+      <p>
+        O Jiu-Jitsu é mais que uma arte marcial. É evolução contínua.
+      </p>
+      <button onclick="location.href='começar.html'">Começar Agora</button>
+    </div>
+  </section>
+
+  <footer>
+    © 2026 Academia de Jiu-Jitsu • Todos os direitos reservados
+  </footer>
+
+</body>
+</html>
