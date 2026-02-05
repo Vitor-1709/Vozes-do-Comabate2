@@ -216,7 +216,6 @@
   <div class="nav">
     <div class="container">
       <div class="btn" onclick="location.href='index.html'">Voltar</div>
-      <div class="btn" onclick="location.href='cadastro.html'">Cadastrar</div>
       <div class="btn" onclick="location.href='Localizações.html'">Localizações</div>
       <svg class="outline" overflow="visible" width="400" height="60" viewBox="0 0 400 60">
         <rect class="rect" pathLength="100" x="0" y="0" width="400" height="60"></rect>
@@ -230,23 +229,26 @@
       <h1>Entrar na <span>Conta</span></h1>
       <p>Acesse sua conta e continue sua evolução</p>
 
-      <form>
+      <form onsubmit="event.preventDefault(); loginUsuario();">
         <div class="input-group">
           <label>Email</label>
-          <input type="email" placeholder="Digite seu email" required>
+          <input type="email" id="loginEmail" placeholder="Digite seu email" required>
         </div>
-
+      
         <div class="input-group">
           <label>Senha</label>
-          <input type="password" placeholder="Digite sua senha" required>
+          <input type="password" id="loginSenha" placeholder="Digite sua senha" required>
         </div>
-
+      
         <button class="login-btn" type="submit">Entrar</button>
       </form>
-
+      
       <div class="login-links">
-        <p>Não tem conta? <a href="#">Cadastre-se</a></p>
+        <p>Não tem conta? <a href="cadastro.html">Cadastre-se</a></p>
       </div>
+      
+      <script src="script.js"></script>
+      
     </div>
   </main>
 

@@ -21,6 +21,19 @@
       background: linear-gradient(180deg, #0b0b0b, #1a1a1a);
       color: #fff;
     }
+    [ Força, Técnica e Disciplina ]
+    [ texto ]
+
+    [ Começar Agora ]
+
+    ⬇️ AQUI ⬇️
+    [ Vídeo 1 ]
+    [ Vídeo 2 ]
+    [ Vídeo 3 ]
+    .hero {
+      height: calc(100vh - 120px);
+    }
+
 
     /* ===== HEADER / NAVBAR ===== */
     header {
@@ -173,6 +186,7 @@
 
   <!-- HEADER / NAVBAR -->
   <header>
+    
     <div class="nav">
       <div class="container">
         <div class="btn" onclick="location.href='cadastro.html'">Cadastro</div>
@@ -211,12 +225,22 @@
         O Jiu-Jitsu é mais que uma arte marcial. É evolução contínua.
       </p>
       <button onclick="location.href='começar.html'">Começar Agora</button>
+
+    <!-- VÍDEOS DO INÍCIO -->
+    <div id="videosInicio" style="margin-top:50px;"></div>
+
     </div>
   </section>
 
   <footer>
     © 2026 Academia de Jiu-Jitsu • Todos os direitos reservados
   </footer>
+  <script src="script.js"></script>
+  <script>
+    protegerPagina();
+    carregarVideosInicio();
+  </script>
+
 
 </body>
 </html>
