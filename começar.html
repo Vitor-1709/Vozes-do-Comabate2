@@ -309,39 +309,84 @@
 
   <script>
     const modal = document.getElementById("videoModal");
+const videoName = document.getElementById("videoName");
+const videoUrl = document.getElementById("videoUrl");
+const videoLevel = document.getElementById("videoLevel");
 
-    function openModal() {
-      modal.style.display = "flex";
-    }
+// abrir / fechar modal
+function openModal() {
+  modal.style.display = "flex";
+}
 
-    function closeModal() {
-      modal.style.display = "none";
-    }
+function closeModal() {
+  modal.style.display = "none";
+}
 
-    function saveVideo() {
-      const name = videoName.value.trim();
-      const url = videoUrl.value.trim();
-      const level = videoLevel.value;
+// salvar vídeo por nível
+function saveVideo() {
+  const name = videoName.value.trim();
+  const url = videoUrl.value.trim();
+  const level = videoLevel.value;
 
-      if (!name || !url || !level) {
-        alert("Preencha todos os campos!");
-        return;
-      }
+  if (!name || !url || !level) {
+    alert("Preencha todos os campos!");
+    return;
+  }
 
-      const videos = JSON.parse(localStorage.getItem("videos")) || [];
-      videos.push({ name, url, level });
-      localStorage.setItem("videos", JSON.stringify(videos));
+  const videos = JSON.parse(localStorage.getItem("videos")) || {
+    branca: [],
+    azul: [],
+    preta: []
+  };
 
-      videoName.value = "";
-      videoUrl.value = "";
-      videoLevel.value = "";
+  videos[level].push({ name, url });
 
-      closeModal();
-    }
+  localStorage.setItem("videos", JSON.stringify(videos));
 
-    modal.addEventListener("click", e => {
-      if (e.target === modal) closeModal();
-    });
+  videoName.value = "";
+  videoUrl.value = "";
+  videoLevel.value = "";
+
+  closeModal();
+}
+
+// fechar modal clicando fora
+modal.addEventListener("click", e => {
+  if (e.target === modal) closeModal();
+});
+
+// ===== LISTAR VÍDEOS POR NÍVEL =====
+function showVideos(level) {
+  const videos = JSON.parse(localStorage.getItem("videos")) || {};
+  const list = videos[level] || [];
+
+  if (list.length === 0) {
+    alert("Nenhum vídeo cadastrado para este nível.");
+    return;
+  }
+
+  let html = `Vídeos do nível ${level.toUpperCase()}:\n\n`;
+
+  list.forEach((v, i) => {
+    html += `${i + 1}. ${v.name}\n${v.url}\n\n`;
+  });
+
+  alert(html);
+}
+
+// botões dos níveis
+document.getElementById("branca").addEventListener("click", () => {
+  showVideos("branca");
+});
+
+document.getElementById("azul").addEventListener("click", () => {
+  showVideos("azul");
+});
+
+document.getElementById("preta").addEventListener("click", () => {
+  showVideos("preta");
+});
+ 
   </script>
 
 </body>
